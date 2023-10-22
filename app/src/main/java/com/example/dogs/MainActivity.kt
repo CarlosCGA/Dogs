@@ -2,6 +2,7 @@ package com.example.dogs
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
@@ -43,19 +44,24 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
     //Execute query to get list of url images of dogs by breed
     private fun searchByBreed(query: String) {
+        binding.rvDogs.animate().alpha(0F).start()
+        binding.viewLoading.animate().alpha(1F).start()
+
         CoroutineScope(Dispatchers.IO).launch {
             val call = getRetrofit().create(APIService::class.java).getDogsByBreed("$query/images")
             val dogs = call.body()
             runOnUiThread { //Runs in main thread
+                binding.viewLoading.animate().alpha(0F).start()
+
                 if (call.isSuccessful) {
                     val images = dogs?.images ?: emptyList()
                     dogImages.clear()
                     dogImages.addAll(images)
                     adapter.notifyDataSetChanged()
+                    binding.rvDogs.animate().alpha(1F).start()
+                    hideKeyboard()
                 } else
                     showError()
-
-                hideKeyboard()
             }
         }
     }

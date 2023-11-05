@@ -8,6 +8,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!--
     <androidx.appcompat.widget.SearchView
         android:id="@+id/svDogs"
         android:layout_width="0dp"
@@ -17,28 +18,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0" />
+        -->
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvDogs"
+        android:id="@+id/rvBreeds"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:alpha="0"
+        tools:listitem="@layout/item_breed"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/svDogs" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.facebook.shimmer.ShimmerFrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/svDogs"
+        app:layout_constraintTop_toTopOf="parent"
         app:shimmer_auto_start="true">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/viewLoading"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:alpha="0"
+            android:alpha="1"
             android:orientation="vertical">
 
             <include layout="@layout/item_dog_loading" />

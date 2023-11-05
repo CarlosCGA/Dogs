@@ -3,8 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/carlo/AndroidStudioProjects/Dogs/app/src/main/res/layout/activity_main.xml" value="0.21621621621621623" />
-        <entry key="..\:/Users/carlo/AndroidStudioProjects/Dogs/app/src/main/res/layout/item_dog.xml" value="0.5489583333333333" />
+        <entry key="..\:/Users/carlo/AndroidStudioProjects/Dogs/app/src/main/res/layout/activity_main.xml" value="0.5185185185185185" />
+        <entry key="..\:/Users/carlo/AndroidStudioProjects/Dogs/app/src/main/res/layout/activity_search_dog_images_by_breed.xml" value="0.55" />
+        <entry key="..\:/Users/carlo/AndroidStudioProjects/Dogs/app/src/main/res/layout/activity_search_images_by_breed.xml" value="0.5359375" />
+        <entry key="..\:/Users/carlo/AndroidStudioProjects/Dogs/app/src/main/res/layout/item_breed.xml" value="0.55" />
+        <entry key="..\:/Users/carlo/AndroidStudioProjects/Dogs/app/src/main/res/layout/item_dog.xml" value="0.5" />
         <entry key="..\:/Users/carlo/AndroidStudioProjects/Dogs/app/src/main/res/layout/item_dog_loading.xml" value="0.5489583333333333" />
       </map>
     </option>

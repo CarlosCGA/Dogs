@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="320dp"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="@dimen/marginBig"
     app:cardCornerRadius="16dp">
 
@@ -12,5 +13,21 @@
         android:layout_height="match_parent"
         android:contentDescription="@string/dog_image"
         android:scaleType="centerCrop" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:layout_marginTop="@dimen/marginSmall"
+        android:layout_marginEnd="@dimen/marginSmall"
+        app:cardCornerRadius="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/marginSmall"
+            tools:text="Breed" />
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.cardview.widget.CardView>

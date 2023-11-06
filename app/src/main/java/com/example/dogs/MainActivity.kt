@@ -6,18 +6,16 @@ import android.os.Bundle
 import android.util.Log
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.dogs.utils.APIEndpoints
+import com.example.dogs.utils.DogAPIEndpoints
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import com.example.dogs.databinding.ActivityMainBinding
-import java.util.*
 
-class MainActivity : AppCompatActivity()/*, SearchView.OnQueryTextListener*/{
+class MainActivity : AppCompatActivity()/*, SearchView.OnQueryTextListener*/ {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var adapter: BreedAdapter
@@ -38,38 +36,10 @@ class MainActivity : AppCompatActivity()/*, SearchView.OnQueryTextListener*/{
 
 
     private fun initRecyclerView() {
-        adapter = BreedAdapter(breedsMapdog) //init recyclerView empty
+        adapter = BreedAdapter(breedsMapdog, dogImages) //init recyclerView empty
         binding.rvBreeds.layoutManager = LinearLayoutManager(this)
         binding.rvBreeds.adapter = adapter
     }
-
-
-    /*
-    //Execute query to get list of url images of dogs by breed
-    @SuppressLint("NotifyDataSetChanged")
-    private fun searchByBreed(query: String) {
-        binding.rvDogs.animate().alpha(0F).start()
-        binding.viewLoading.animate().alpha(1F).start()
-
-        CoroutineScope(Dispatchers.IO).launch {
-            val call = getRetrofit().create(APIService::class.java).getDogsByBreed("breed/$query/images")
-            val dogs = call.body()
-            runOnUiThread { //Runs in main thread
-                binding.viewLoading.animate().alpha(0F).start()
-
-                if (call.isSuccessful) {
-                    val images = dogs?.images ?: emptyList()
-                    dogImages.clear()
-                    dogImages.addAll(images)
-                    adapter.notifyDataSetChanged()
-                    binding.rvDogs.animate().alpha(1F).start()
-                    hideKeyboard()
-                } else
-                    showError()
-            }
-        }
-    }
-    */
 
     @SuppressLint("NotifyDataSetChanged")
     private fun getAllBreeds() {
@@ -77,20 +47,30 @@ class MainActivity : AppCompatActivity()/*, SearchView.OnQueryTextListener*/{
         binding.viewLoading.animate().alpha(1F).start()
 
         CoroutineScope(Dispatchers.IO).launch {
-            val call = getRetrofit().create(APIService::class.java).getAllBreeds(APIEndpoints.LIST_ALL_BREEDS)
-            val breeds = call.body()!!.breeds
-            runOnUiThread {
-                if (call.isSuccessful) {
+            val allBreedsCall =
+                RetrofitInstance.instance.getRetrofit().create(APIService::class.java)
+                    .getAllBreeds()
+            val breeds = allBreedsCall.body()!!.breeds
+            if (allBreedsCall.isSuccessful) {
+                val images = mutableListOf<String>()
+                breeds.keys.forEach { breed ->
+                    val imagesByBreedCall = RetrofitInstance.instance.getRetrofit()
+                        .create(APIService::class.java)
+                        .getRandomDogImagesByBreed(breed, count = 1)
+                    images.add(imagesByBreedCall.body()!!.images[0])
+                }
+
+                runOnUiThread {
                     if (breeds.isNotEmpty()) {
-                        Log.d("CARLOS", breeds.toString())
                         breedsMapdog.addAll(breeds.toList().toMutableList())
-                        Log.d("CARLOS", "breeds.size -> ${breeds.size}")
+                        dogImages.addAll(images)
                         adapter.notifyDataSetChanged()
 
                         binding.viewLoading.animate().alpha(0F).start()
                         binding.rvBreeds.animate().alpha(1F).start()
                     }
                 }
+
             }
         }
     }
@@ -110,6 +90,33 @@ class MainActivity : AppCompatActivity()/*, SearchView.OnQueryTextListener*/{
         Toast.makeText(this, "Ha ocurrido un error", Toast.LENGTH_SHORT).show()
     }
 
+/*
+    //Execute query to get list of url images of dogs by breed
+    @SuppressLint("NotifyDataSetChanged")
+    private fun searchByBreed(query: String) {
+        binding.rvDogs.animate().alpha(0F).start()
+        binding.viewLoading.animate().alpha(1F).start()
+
+        CoroutineScope(Dispatchers.IO).launch {
+            val call = getRetrofit().create(APIService::class.java).getDogsByBreed(query)
+            val dogs = call.body()
+            runOnUiThread { //Runs in main thread
+                binding.viewLoading.animate().alpha(0F).start()
+
+                if (call.isSuccessful) {
+                    val images = dogs?.images ?: emptyList()
+                    dogImages.clear()
+                    dogImages.addAll(images)
+                    adapter.notifyDataSetChanged()
+                    binding.rvDogs.animate().alpha(1F).start()
+                    hideKeyboard()
+                } else
+                    showError()
+            }
+        }
+    }
+    */
+
     /*
     //Executed when SearchView submitted
     override fun onQueryTextSubmit(query: String?): Boolean {
@@ -125,10 +132,4 @@ class MainActivity : AppCompatActivity()/*, SearchView.OnQueryTextListener*/{
     }
     */
 
-    private fun getRetrofit(): Retrofit {
-        return Retrofit.Builder()
-            .baseUrl(APIEndpoints.BASE_URL) //Base URL of API
-            .addConverterFactory(GsonConverterFactory.create()) //Use GsonConverter library
-            .build()
-    }
 }

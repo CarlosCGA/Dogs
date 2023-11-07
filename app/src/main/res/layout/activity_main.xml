@@ -44,11 +44,11 @@
             android:alpha="1"
             android:orientation="vertical">
 
-            <include layout="@layout/item_dog_loading" />
+            <include layout="@layout/item_dog_loading_with_margins" />
 
-            <include layout="@layout/item_dog_loading" />
+            <include layout="@layout/item_dog_loading_with_margins" />
 
-            <include layout="@layout/item_dog_loading" />
+            <include layout="@layout/item_dog_loading_with_margins" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 

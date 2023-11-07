@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity()/*, SearchView.OnQueryTextListener*/ {
         binding.rvBreeds.adapter = adapter
     }
 
+    /*
     @SuppressLint("NotifyDataSetChanged")
     private fun getAllBreeds() {
         binding.rvBreeds.animate().alpha(0F).start()
@@ -71,6 +72,47 @@ class MainActivity : AppCompatActivity()/*, SearchView.OnQueryTextListener*/ {
                     }
                 }
 
+            }
+        }
+    }
+    */
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun getAllBreeds() {
+        binding.rvBreeds.animate().alpha(0F).start()
+        binding.viewLoading.animate().alpha(1F).start()
+
+        CoroutineScope(Dispatchers.IO).launch {
+            val allBreedsCall =
+                RetrofitInstance.instance.getRetrofit().create(APIService::class.java)
+                    .getAllBreeds()
+            val breeds = allBreedsCall.body()!!.breeds
+            if (allBreedsCall.isSuccessful) {
+                runOnUiThread {
+                    binding.viewLoading.animate().alpha(0F).start()
+                    binding.rvBreeds.animate().alpha(1F).start()
+
+                }
+                getRandomImageByBreed(breeds)
+            }
+        }
+    }
+
+    private suspend fun getRandomImageByBreed(breeds: Map<String, List<String>>) {
+        var position = 0
+        breeds.keys.forEach { breed ->
+            val imagesByBreedCall = RetrofitInstance.instance.getRetrofit()
+                .create(APIService::class.java)
+                .getRandomDogImagesByBreed(breed, howMany = 1)
+            if (imagesByBreedCall.isSuccessful) {
+                runOnUiThread {
+                    adapter.addItem(
+                        breeds.toList().toMutableList()[position],
+                        imagesByBreedCall.body()!!.images[0],
+                        position
+                    )
+                    position++
+                }
             }
         }
     }

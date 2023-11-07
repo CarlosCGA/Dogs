@@ -14,5 +14,5 @@ interface APIService {
     suspend fun getAllBreeds(): Response<BreedsResponse>
 
     @GET(DogAPIEndpoints.GET_RANDOM_DOG_IMAGES_BY_BREED)
-    suspend fun getRandomDogImagesByBreed(@Path("breed") breed: String, @Path("count") count: Int): Response<DogResponse>
+    suspend fun getRandomDogImagesByBreed(@Path("breed") breed: String, @Path("howMany") howMany: Int): Response<DogResponse>
 }

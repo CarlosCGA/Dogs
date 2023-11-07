@@ -10,7 +10,12 @@ class BreedViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val binding = ItemBreedBinding.bind(view)
 
     fun bind(breed: String, image: String) {
-        Picasso.get().load(image).into(binding.ivDog)
+        if(image.isNotEmpty()) {
+            Picasso.get().load(image).into(binding.ivDog)
+            binding.viewLoading.animate().alpha(0F)
+            binding.ivDog.animate().alpha(1F)
+        }
+
         binding.tvBreed.text =
             breed.replaceFirst(breed.substring(0, 1), breed.substring(0, 1).uppercase())
     }

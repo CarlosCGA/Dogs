@@ -1,34 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="320dp"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="@dimen/marginBig"
+    xmlns:tools="http://schemas.android.com/tools"
     app:cardCornerRadius="16dp">
 
-    <ImageView
-        android:id="@+id/ivDog"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:contentDescription="@string/dog_image"
-        android:scaleType="centerCrop" />
+        <ImageView
+            android:id="@+id/ivDog"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0"
+            android:contentDescription="@string/dog_image"
+            android:scaleType="centerCrop" />
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top|end"
-        android:layout_marginTop="@dimen/marginSmall"
-        android:layout_marginEnd="@dimen/marginSmall"
-        app:cardCornerRadius="16dp">
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/viewLoading"
+            android:layout_width="match_parent"
+            android:layout_height="320dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shimmer_auto_start="true">
 
-        <TextView
-            android:id="@+id/tvBreed"
+            <include layout="@layout/item_dog_loading" />
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+        <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/marginSmall"
-            tools:text="Breed" />
+            android:layout_gravity="top|end"
+            android:layout_marginTop="@dimen/marginSmall"
+            android:layout_marginEnd="@dimen/marginSmall"
+            app:cardCornerRadius="16dp">
+
+            <TextView
+                android:id="@+id/tvBreed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/marginSmall"
+                tools:text="Breed" />
+
+        </androidx.cardview.widget.CardView>
 
     </androidx.cardview.widget.CardView>
-
-</androidx.cardview.widget.CardView>

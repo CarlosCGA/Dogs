@@ -15,7 +15,7 @@ class BreedAdapter(
     }
 
     override fun onBindViewHolder(holder: BreedViewHolder, position: Int) {
-        holder.bind(breedsWithSubBreeds[position].first, images[position])
+        holder.bind(breedsWithSubBreeds[position].first, images[position], breedsWithSubBreeds[position].second)
     }
 
     override fun getItemCount(): Int {

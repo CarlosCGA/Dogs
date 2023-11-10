@@ -41,8 +41,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/marginSmall"
-                android:text="@string/breed_input"
-                tools:text="Breed" />
+                android:text="@string/breed_subBreed_input"
+                tools:text="Breed - SubBreed" />
 
         </androidx.cardview.widget.CardView>
 

@@ -3,4 +3,7 @@
 
     <string name="dog_image">Dog image</string>
     <string name="dog_image_loading">Dog image loading</string>
+
+    <string name="breed_input">%s</string>
+    <string name="breed_subBreed_input">%s - %s</string>
 </resources>

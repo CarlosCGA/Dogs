@@ -4,15 +4,13 @@ import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.dogs.utils.DogAPIEndpoints
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import com.example.dogs.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity()/*, SearchView.OnQueryTextListener*/ {
@@ -20,23 +18,22 @@ class MainActivity : AppCompatActivity()/*, SearchView.OnQueryTextListener*/ {
     private lateinit var binding: ActivityMainBinding
     private lateinit var adapter: BreedAdapter
     private val dogImages = mutableListOf<String>()
-    private var breedsMapdog = mutableListOf<Pair<String, List<String>>>()
+    private var breedsAndSubBreeds = mutableListOf<Pair<String, List<String>>>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        ContextInstance.instance.setContext(context = this)
 
-        breedsMapdog.toList()
+        breedsAndSubBreeds.toList()
         initRecyclerView()
         getAllBreeds()
-
         //binding.svDogs.setOnQueryTextListener(this)
     }
 
-
     private fun initRecyclerView() {
-        adapter = BreedAdapter(breedsMapdog, dogImages) //init recyclerView empty
+        adapter = BreedAdapter(breedsAndSubBreeds, dogImages) //init recyclerView empty
         binding.rvBreeds.layoutManager = LinearLayoutManager(this)
         binding.rvBreeds.adapter = adapter
     }
@@ -80,6 +77,7 @@ class MainActivity : AppCompatActivity()/*, SearchView.OnQueryTextListener*/ {
     @SuppressLint("NotifyDataSetChanged")
     private fun getAllBreeds() {
         binding.rvBreeds.animate().alpha(0F).start()
+        binding.viewLoading.visibility = View.VISIBLE
         binding.viewLoading.animate().alpha(1F).start()
 
         CoroutineScope(Dispatchers.IO).launch {
@@ -89,7 +87,9 @@ class MainActivity : AppCompatActivity()/*, SearchView.OnQueryTextListener*/ {
             val breeds = allBreedsCall.body()!!.breeds
             if (allBreedsCall.isSuccessful) {
                 runOnUiThread {
-                    binding.viewLoading.animate().alpha(0F).start()
+                    binding.viewLoading.animate().alpha(0F).withEndAction {
+                        binding.viewLoading.visibility = View.GONE
+                    }.start()
                     binding.rvBreeds.animate().alpha(1F).start()
 
                 }
@@ -100,6 +100,7 @@ class MainActivity : AppCompatActivity()/*, SearchView.OnQueryTextListener*/ {
 
     private suspend fun getRandomImageByBreed(breeds: Map<String, List<String>>) {
         var position = 0
+        Log.d("CARLOS", breeds.toString())
         breeds.keys.forEach { breed ->
             val imagesByBreedCall = RetrofitInstance.instance.getRetrofit()
                 .create(APIService::class.java)

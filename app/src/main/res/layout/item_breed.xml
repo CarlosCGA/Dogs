@@ -1,49 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    android:id="@+id/cvParent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cvParent"
     android:layout_width="match_parent"
     android:layout_height="320dp"
     android:layout_margin="@dimen/marginBig"
-    xmlns:tools="http://schemas.android.com/tools"
     app:cardCornerRadius="16dp">
 
-        <ImageView
-            android:id="@+id/ivDog"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:alpha="0"
-            android:contentDescription="@string/dog_image"
-            android:scaleType="centerCrop" />
+    <ImageView
+        android:id="@+id/ivDog"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0"
+        android:contentDescription="@string/dog_image"
+        android:scaleType="centerCrop" />
 
-        <com.facebook.shimmer.ShimmerFrameLayout
-            android:id="@+id/viewLoading"
-            android:layout_width="match_parent"
-            android:layout_height="320dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:shimmer_auto_start="true">
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/viewLoading"
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shimmer_auto_start="true">
 
-            <include layout="@layout/item_dog_loading" />
+        <include layout="@layout/item_dog_loading" />
 
-        </com.facebook.shimmer.ShimmerFrameLayout>
+    </com.facebook.shimmer.ShimmerFrameLayout>
 
-        <androidx.cardview.widget.CardView
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/aqua_island"
+        android:layout_gravity="top|start"
+        android:layout_marginTop="@dimen/marginSmall"
+        android:layout_marginStart="@dimen/marginNormal"
+        app:cardCornerRadius="16dp">
+
+        <TextView
+            android:id="@+id/tvBreed"
             android:layout_width="wrap_content"
+            android:textColor="@color/white"
             android:layout_height="wrap_content"
-            android:layout_gravity="top|end"
-            android:layout_marginTop="@dimen/marginSmall"
-            android:layout_marginEnd="@dimen/marginSmall"
-            app:cardCornerRadius="16dp">
-
-            <TextView
-                android:id="@+id/tvBreed"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/marginSmall"
-                android:text="@string/breed_input"
-                tools:text="Breed" />
-
-        </androidx.cardview.widget.CardView>
+            android:padding="@dimen/marginSmall"
+            android:text="@string/breed_input"
+            android:textStyle="bold"
+            tools:text="Breed" />
 
     </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/apricot_peach"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="@dimen/marginNormal"
+        android:layout_marginBottom="@dimen/marginSmall"
+        app:cardCornerRadius="16dp">
+
+        <ImageButton
+            android:id="@+id/btSubBreeds"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:background="@color/transparent"
+            android:adjustViewBounds="true"
+            android:padding="@dimen/marginSmall"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_several_dogs_white"
+            android:contentDescription="@string/view_more" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/apricot_peach"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="@dimen/marginNormal"
+        android:layout_marginBottom="@dimen/marginSmall"
+        app:cardCornerRadius="16dp">
+
+        <ImageButton
+            android:id="@+id/btDogPictures"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:background="@color/transparent"
+            android:adjustViewBounds="true"
+            android:padding="@dimen/marginSmall"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_dog_in_photo_frame_white"
+            android:contentDescription="@string/view_more" />
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.cardview.widget.CardView>

@@ -1,6 +1,5 @@
 package com.example.dogs
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -32,7 +31,10 @@ class SubBreedAdapter(
 
     fun addImageToItem(image: String, position: Int) {
         if(position < itemCount) {
-            this.images.add(position, image)
+            if(position < images.size)
+                this.images[position] = image
+            else
+                this.images.add(image)
         }
     }
 

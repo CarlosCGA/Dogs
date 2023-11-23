@@ -23,8 +23,17 @@ class BreedViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         binding.tvBreed.text =
             breed.replaceFirst(breed.substring(0, 1), breed.substring(0, 1).uppercase())
 
-        binding.cvParent.setOnClickListener {
-            if (subBreeds.isNotEmpty()) {
+        if (subBreeds.isEmpty()) {
+            binding.btSubBreeds.visibility = View.GONE
+            binding.btDogPictures.visibility = View.VISIBLE
+
+            //TODO CREATE AND START ACTIVITY WITH DOG PICTURES RECYCLERVIEW
+        }
+        else {
+            binding.btSubBreeds.visibility = View.VISIBLE
+            binding.btDogPictures.visibility = View.GONE
+
+            binding.btSubBreeds.setOnClickListener{
                 if (ContextInstance.instance.getContext() != null) {
                     val intent =
                         Intent(ContextInstance.instance.getContext(), SubBreedActivity::class.java)

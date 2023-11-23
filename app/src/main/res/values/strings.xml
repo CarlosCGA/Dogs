@@ -6,4 +6,6 @@
 
     <string name="breed_input">%s</string>
     <string name="breed_subBreed_input">%s - %s</string>
+
+    <string name="view_more">view more</string>
 </resources>

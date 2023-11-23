@@ -9,4 +9,13 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="shimmer">#C8C8C9</color>
+
+    <color name="transparent">#00FFFFFF</color>
+
+    <!-- COLOR MARGIC PALETTE -->
+    <color name="rose_bud">#f7a7a6</color>
+    <color name="apricot_peach">#f9ccb3</color>
+    <color name="sandy_beach">#ffe8c2</color>
+    <color name="botticelli">#c5d9e7</color>
+    <color name="aqua_island">#a3c7db</color>
 </resources>

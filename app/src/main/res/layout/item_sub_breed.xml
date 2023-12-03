@@ -31,6 +31,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/aqua_island"
             android:layout_gravity="top|end"
             android:layout_marginTop="@dimen/marginSmall"
             android:layout_marginEnd="@dimen/marginSmall"
@@ -40,6 +41,8 @@
                 android:id="@+id/tvBreed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textStyle="bold"
                 android:padding="@dimen/marginSmall"
                 android:text="@string/breed_subBreed_input"
                 tools:text="Breed - SubBreed" />

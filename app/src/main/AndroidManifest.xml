@@ -25,6 +25,7 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".DogActivity" />
         <activity android:name=".SubBreedActivity" />
     </application>
 

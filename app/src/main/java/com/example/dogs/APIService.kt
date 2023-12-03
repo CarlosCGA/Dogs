@@ -7,7 +7,7 @@ import retrofit2.http.Path
 
 interface APIService {
     @GET(DogAPIEndpoints.GET_ALL_IMAGES_BY_BREED)
-    suspend fun getDogsByBreed(): Response<DogResponse>
+    suspend fun getDogsByBreed(@Path("breed") breed: String): Response<DogResponse>
 
     @GET(DogAPIEndpoints.LIST_ALL_BREEDS)
     suspend fun getAllBreeds(): Response<BreedsResponse>

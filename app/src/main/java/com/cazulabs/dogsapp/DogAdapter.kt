@@ -1,8 +1,9 @@
-package com.example.dogs
+package com.cazulabs.dogsapp
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.dogs.R
 
 class DogAdapter(private val images:List<String>): RecyclerView.Adapter<DogViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DogViewHolder {

@@ -1,11 +1,11 @@
-package com.example.dogs
+package com.cazulabs.dogsapp
 
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dogs.databinding.ActivitySubBreedBinding
-import com.example.dogs.utils.DogConstants
+import com.cazulabs.dogsapp.utils.DogConstants
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

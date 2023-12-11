@@ -39,11 +39,12 @@
         <TextView
             android:id="@+id/tvBreed"
             android:layout_width="wrap_content"
-            android:textColor="@color/white"
             android:layout_height="wrap_content"
             android:padding="@dimen/marginSmall"
             android:text="@string/breed_input"
+            android:textColor="@color/white"
             android:textStyle="bold"
+            tools:ignore="TextContrastCheck"
             tools:text="Breed" />
 
     </androidx.cardview.widget.CardView>
@@ -62,19 +63,20 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
-            android:background="@color/transparent"
             android:adjustViewBounds="true"
+            android:background="@color/transparent"
+            android:contentDescription="@string/explore_sub_breeds"
             android:padding="@dimen/marginSmall"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_several_dogs_white"
-            android:contentDescription="@string/view_more" />
+            tools:ignore="ImageContrastCheck" />
 
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/apricot_peach"
+        app:cardBackgroundColor="@color/rose_bud"
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="@dimen/marginNormal"
         android:layout_marginBottom="@dimen/marginSmall"
@@ -85,12 +87,13 @@
             android:layout_width="80dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
-            android:background="@color/transparent"
             android:adjustViewBounds="true"
+            android:background="@color/transparent"
+            android:contentDescription="@string/explore_dog_images"
             android:padding="@dimen/marginSmall"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_dog_in_photo_frame_white"
-            android:contentDescription="@string/view_more" />
+            tools:ignore="ImageContrastCheck" />
 
     </androidx.cardview.widget.CardView>
 

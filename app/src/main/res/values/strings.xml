@@ -8,4 +8,6 @@
     <string name="breed_subBreed_input">%s - %s</string>
 
     <string name="view_more">view more</string>
+    <string name="explore_dog_images">explore dog images</string>
+    <string name="explore_sub_breeds">explore sub-breeds</string>
 </resources>

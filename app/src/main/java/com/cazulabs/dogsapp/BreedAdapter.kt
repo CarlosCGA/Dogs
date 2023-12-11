@@ -1,9 +1,9 @@
-package com.example.dogs
+package com.cazulabs.dogsapp
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.dogs.R
 
 class BreedAdapter(
     private val breedsWithSubBreeds: MutableList<Pair<String, List<String>>>,

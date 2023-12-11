@@ -1,10 +1,10 @@
-package com.example.dogs
+package com.cazulabs.dogsapp
 
 import android.content.Intent
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dogs.databinding.ItemBreedBinding
-import com.example.dogs.utils.DogConstants
+import com.cazulabs.dogsapp.utils.DogConstants
 import com.squareup.picasso.Picasso
 
 class BreedViewHolder(view: View) : RecyclerView.ViewHolder(view) {

@@ -1,7 +1,8 @@
-package com.example.dogs
+package com.cazulabs.dogsapp
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.example.dogs.R
 import com.example.dogs.databinding.ItemSubBreedBinding
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope

@@ -1,4 +1,4 @@
-package com.example.dogs
+package com.cazulabs.dogsapp
 
 import com.google.gson.annotations.SerializedName
 

@@ -1,6 +1,6 @@
-package com.example.dogs
+package com.cazulabs.dogsapp
 
-import com.example.dogs.utils.DogAPIEndpoints
+import com.cazulabs.dogsapp.utils.DogAPIEndpoints
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path

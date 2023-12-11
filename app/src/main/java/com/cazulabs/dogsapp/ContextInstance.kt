@@ -1,4 +1,4 @@
-package com.example.dogs
+package com.cazulabs.dogsapp
 
 import android.content.Context
 import androidx.annotation.NonNull

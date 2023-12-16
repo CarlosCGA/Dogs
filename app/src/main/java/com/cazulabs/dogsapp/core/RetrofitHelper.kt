@@ -1,18 +1,18 @@
-package com.cazulabs.dogsapp
+package com.cazulabs.dogsapp.core
 
 import com.cazulabs.dogsapp.utils.DogAPIEndpoints
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class RetrofitInstance private constructor(){
+class RetrofitHelper private constructor(){
     private val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl(DogAPIEndpoints.BASE_URL) //Base URL of API
         .addConverterFactory(GsonConverterFactory.create()) //Use GsonConverter library
         .build()
 
     companion object {
-        val instance: RetrofitInstance by lazy {
-            RetrofitInstance()
+        val instance: RetrofitHelper by lazy {
+            RetrofitHelper()
         }
     }
 

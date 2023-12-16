@@ -1,4 +1,4 @@
-package com.cazulabs.dogsapp
+package com.cazulabs.dogsapp.ui.view
 
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +8,10 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.cazulabs.dogsapp.data.model.remote.APIService
+import com.cazulabs.dogsapp.ui.adapter.BreedAdapter
+import com.cazulabs.dogsapp.core.ContextHelper
+import com.cazulabs.dogsapp.core.RetrofitHelper
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -24,7 +28,7 @@ class MainActivity : AppCompatActivity()/*, SearchView.OnQueryTextListener*/ {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        ContextInstance.instance.setContext(context = this)
+        ContextHelper.instance.setContext(context = this)
 
         breedsAndSubBreeds.toList()
         initRecyclerView()
@@ -82,7 +86,7 @@ class MainActivity : AppCompatActivity()/*, SearchView.OnQueryTextListener*/ {
 
         CoroutineScope(Dispatchers.IO).launch {
             val allBreedsCall =
-                RetrofitInstance.instance.getRetrofit().create(APIService::class.java)
+                RetrofitHelper.instance.getRetrofit().create(APIService::class.java)
                     .getAllBreeds()
             val breeds = allBreedsCall.body()!!.breeds
             if (allBreedsCall.isSuccessful) {
@@ -102,7 +106,7 @@ class MainActivity : AppCompatActivity()/*, SearchView.OnQueryTextListener*/ {
         var position = 0
         Log.d("CARLOS", breeds.toString())
         breeds.keys.forEach { breed ->
-            val imagesByBreedCall = RetrofitInstance.instance.getRetrofit()
+            val imagesByBreedCall = RetrofitHelper.instance.getRetrofit()
                 .create(APIService::class.java)
                 .getRandomDogImagesByBreed(breed, howMany = 1)
             if (imagesByBreedCall.isSuccessful) {

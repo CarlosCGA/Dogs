@@ -1,7 +1,11 @@
-package com.cazulabs.dogsapp
+package com.cazulabs.dogsapp.ui.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.cazulabs.dogsapp.data.model.remote.APIService
+import com.cazulabs.dogsapp.core.ContextHelper
+import com.cazulabs.dogsapp.core.RetrofitHelper
+import com.cazulabs.dogsapp.ui.view.SubBreedActivity
 import com.example.dogs.R
 import com.example.dogs.databinding.ItemSubBreedBinding
 import com.squareup.picasso.Picasso
@@ -19,7 +23,7 @@ class SubBreedViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         } else
             getRandomImageBySubBreed(adapter, breed, subBreed)
 
-        binding.tvBreed.text = ContextInstance.instance.getContext()!!.getString(
+        binding.tvBreed.text = ContextHelper.instance.getContext()!!.getString(
             R.string.breed_subBreed_input,
             breed.replaceFirst(breed.substring(0, 1), breed.substring(0, 1).uppercase()),
             subBreed.replaceFirst(subBreed.substring(0, 1), subBreed.substring(0, 1).uppercase())
@@ -32,7 +36,7 @@ class SubBreedViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         subBreed: String
     ) {
         CoroutineScope(Dispatchers.IO).launch {
-            val imagesByBreedAndSubBreedCall = RetrofitInstance.instance.getRetrofit()
+            val imagesByBreedAndSubBreedCall = RetrofitHelper.instance.getRetrofit()
                 .create(APIService::class.java)
                 .getRandomDogImagesByBreedAndSubBreed(breed, subBreed, howMany = 1)
 
@@ -45,7 +49,7 @@ class SubBreedViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     }
 
     private fun setDogImage(image: String) {
-        val context = (ContextInstance.instance.getContext()) as SubBreedActivity
+        val context = (ContextHelper.instance.getContext()) as SubBreedActivity
         context.runOnUiThread {
             Picasso.get().load(image).into(binding.ivDog)
             binding.viewLoading.animate().alpha(0F)

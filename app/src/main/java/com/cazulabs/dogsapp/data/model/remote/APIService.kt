@@ -1,5 +1,7 @@
-package com.cazulabs.dogsapp
+package com.cazulabs.dogsapp.data.model.remote
 
+import com.cazulabs.dogsapp.data.model.remote.BreedsResponse
+import com.cazulabs.dogsapp.data.model.remote.DogResponse
 import com.cazulabs.dogsapp.utils.DogAPIEndpoints
 import retrofit2.Response
 import retrofit2.http.GET

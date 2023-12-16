@@ -1,15 +1,15 @@
-package com.cazulabs.dogsapp
+package com.cazulabs.dogsapp.core
 
 import android.content.Context
 import androidx.annotation.NonNull
 
 
-class ContextInstance private constructor(){
+class ContextHelper private constructor(){
     private var context: Context? = null
 
     companion object {
-        val instance: ContextInstance by lazy {
-            ContextInstance()
+        val instance: ContextHelper by lazy {
+            ContextHelper()
         }
     }
 

@@ -1,9 +1,13 @@
-package com.cazulabs.dogsapp
+package com.cazulabs.dogsapp.ui.view
 
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.cazulabs.dogsapp.data.model.remote.APIService
+import com.cazulabs.dogsapp.core.ContextHelper
+import com.cazulabs.dogsapp.ui.adapter.DogAdapter
+import com.cazulabs.dogsapp.core.RetrofitHelper
 import com.example.dogs.databinding.ActivityDogImagelistBinding
 import com.cazulabs.dogsapp.utils.DogConstants
 import kotlinx.coroutines.CoroutineScope
@@ -22,7 +26,7 @@ class DogActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDogImagelistBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        ContextInstance.instance.setContext(context = this)
+        ContextHelper.instance.setContext(context = this)
 
         breed = this.intent?.getStringExtra(DogConstants.BREED) ?: ""
 
@@ -42,7 +46,7 @@ class DogActivity : AppCompatActivity() {
 
     private fun getDogs() {
         CoroutineScope(Dispatchers.IO).launch {
-            val call = RetrofitInstance.instance.getRetrofit().create(APIService::class.java)
+            val call = RetrofitHelper.instance.getRetrofit().create(APIService::class.java)
                 .getDogsByBreed(breed)
             val dogs = call.body()
             runOnUiThread {

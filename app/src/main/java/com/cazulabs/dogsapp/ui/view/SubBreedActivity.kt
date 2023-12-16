@@ -1,9 +1,13 @@
-package com.cazulabs.dogsapp
+package com.cazulabs.dogsapp.ui.view
 
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.cazulabs.dogsapp.data.model.remote.APIService
+import com.cazulabs.dogsapp.core.ContextHelper
+import com.cazulabs.dogsapp.core.RetrofitHelper
+import com.cazulabs.dogsapp.ui.adapter.SubBreedAdapter
 import com.example.dogs.databinding.ActivitySubBreedBinding
 import com.cazulabs.dogsapp.utils.DogConstants
 import kotlinx.coroutines.CoroutineScope
@@ -23,7 +27,7 @@ class SubBreedActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySubBreedBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        ContextInstance.instance.setContext(context = this)
+        ContextHelper.instance.setContext(context = this)
 
         getIntentExtraData()
 
@@ -48,7 +52,7 @@ class SubBreedActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             var position = 0
             subBreeds.forEach { subBreed ->
-                val imagesByBreedAndSubBreedCall = RetrofitInstance.instance.getRetrofit()
+                val imagesByBreedAndSubBreedCall = RetrofitHelper.instance.getRetrofit()
                     .create(APIService::class.java)
                     .getRandomDogImagesByBreedAndSubBreed(breed, subBreed, howMany = 1)
 

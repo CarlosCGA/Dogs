@@ -1,4 +1,4 @@
-package com.cazulabs.dogsapp
+package com.cazulabs.dogsapp.ui.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

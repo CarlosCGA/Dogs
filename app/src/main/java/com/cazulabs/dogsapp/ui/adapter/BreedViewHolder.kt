@@ -1,10 +1,13 @@
-package com.cazulabs.dogsapp
+package com.cazulabs.dogsapp.ui.adapter
 
 import android.content.Intent
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.cazulabs.dogsapp.core.ContextHelper
 import com.example.dogs.databinding.ItemBreedBinding
 import com.cazulabs.dogsapp.utils.DogConstants
+import com.cazulabs.dogsapp.ui.view.DogActivity
+import com.cazulabs.dogsapp.ui.view.SubBreedActivity
 import com.squareup.picasso.Picasso
 
 class BreedViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -29,21 +32,21 @@ class BreedViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
             binding.btDogPictures.setOnClickListener {
                 val intent =
-                    Intent(ContextInstance.instance.getContext(), DogActivity::class.java)
+                    Intent(ContextHelper.instance.getContext(), DogActivity::class.java)
                 intent.putExtra(DogConstants.BREED, breed)
-                ContextInstance.instance.getContext()!!.startActivity(intent)
+                ContextHelper.instance.getContext()!!.startActivity(intent)
             }
         } else {
             binding.btSubBreeds.visibility = View.VISIBLE
             binding.btDogPictures.visibility = View.GONE
 
             binding.btSubBreeds.setOnClickListener {
-                if (ContextInstance.instance.getContext() != null) {
+                if (ContextHelper.instance.getContext() != null) {
                     val intent =
-                        Intent(ContextInstance.instance.getContext(), SubBreedActivity::class.java)
+                        Intent(ContextHelper.instance.getContext(), SubBreedActivity::class.java)
                     intent.putExtra(DogConstants.BREED, breed)
                     intent.putExtra(DogConstants.SUB_BREEDS, subBreeds.toTypedArray())
-                    ContextInstance.instance.getContext()!!.startActivity(intent)
+                    ContextHelper.instance.getContext()!!.startActivity(intent)
                 }
             }
         }

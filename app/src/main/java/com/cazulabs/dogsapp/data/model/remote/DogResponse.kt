@@ -1,4 +1,4 @@
-package com.cazulabs.dogsapp
+package com.cazulabs.dogsapp.data.model.remote
 
 import com.google.gson.annotations.SerializedName
 

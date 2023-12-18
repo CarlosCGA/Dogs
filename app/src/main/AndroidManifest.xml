@@ -16,7 +16,7 @@
         android:theme="@style/Theme.Dogs"
         tools:targetApi="31">
         <activity
-            android:name="com.cazulabs.dogsapp.ui.view.MainActivityMVVM"
+            android:name="com.cazulabs.dogsapp.mvvm.ui.view.MainActivityMVVM"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,8 +25,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.cazulabs.dogsapp.ui.view.DogActivity" />
-        <activity android:name="com.cazulabs.dogsapp.ui.view.SubBreedActivity" />
+        <activity android:name="com.cazulabs.dogsapp.old.activity.DogActivity" />
+        <activity android:name="com.cazulabs.dogsapp.old.activity.SubBreedActivity" />
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.cazulabs.dogsapp.utils
+package com.cazulabs.dogsapp.core
 
 object DogConstants {
     const val BREED = "breed"

@@ -1,8 +1,8 @@
-package com.cazulabs.dogsapp.data.model.remote
+package com.cazulabs.dogsapp.data.model.old
 
-import com.cazulabs.dogsapp.data.model.remote.BreedsResponse
-import com.cazulabs.dogsapp.data.model.remote.DogResponse
-import com.cazulabs.dogsapp.utils.DogAPIEndpoints
+import com.cazulabs.dogsapp.core.DogAPIEndpoints
+import com.cazulabs.dogsapp.data.model.old.BreedResponse
+import com.cazulabs.dogsapp.data.model.old.DogResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -12,7 +12,7 @@ interface APIService {
     suspend fun getDogsByBreed(@Path("breed") breed: String): Response<DogResponse>
 
     @GET(DogAPIEndpoints.LIST_ALL_BREEDS)
-    suspend fun getAllBreeds(): Response<BreedsResponse>
+    suspend fun getAllBreeds(): Response<BreedResponse>
 
     @GET(DogAPIEndpoints.GET_RANDOM_DOG_IMAGES_BY_BREED)
     suspend fun getRandomDogImagesByBreed(@Path("breed") breed: String, @Path("howMany") howMany: Int): Response<DogResponse>

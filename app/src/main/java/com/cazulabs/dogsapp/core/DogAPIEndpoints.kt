@@ -1,4 +1,4 @@
-package com.cazulabs.dogsapp.utils
+package com.cazulabs.dogsapp.core
 
 object DogAPIEndpoints {
     const val BASE_URL= "https://dog.ceo/api/"

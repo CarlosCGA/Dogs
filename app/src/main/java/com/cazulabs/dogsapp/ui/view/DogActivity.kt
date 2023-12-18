@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.cazulabs.dogsapp.data.model.remote.APIService
+import com.cazulabs.dogsapp.data.model.old.APIService
 import com.cazulabs.dogsapp.core.ContextHelper
 import com.cazulabs.dogsapp.ui.adapter.DogAdapter
 import com.cazulabs.dogsapp.core.RetrofitHelper
 import com.example.dogs.databinding.ActivityDogImagelistBinding
-import com.cazulabs.dogsapp.utils.DogConstants
+import com.cazulabs.dogsapp.core.DogConstants
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

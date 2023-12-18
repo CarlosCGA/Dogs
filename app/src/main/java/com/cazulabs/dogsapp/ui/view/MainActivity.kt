@@ -8,7 +8,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.cazulabs.dogsapp.data.model.remote.APIService
+import com.cazulabs.dogsapp.data.model.old.APIService
 import com.cazulabs.dogsapp.ui.adapter.BreedAdapter
 import com.cazulabs.dogsapp.core.ContextHelper
 import com.cazulabs.dogsapp.core.RetrofitHelper

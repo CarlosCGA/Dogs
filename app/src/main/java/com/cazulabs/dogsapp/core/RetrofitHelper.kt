@@ -1,6 +1,5 @@
 package com.cazulabs.dogsapp.core
 
-import com.cazulabs.dogsapp.utils.DogAPIEndpoints
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

@@ -24,7 +24,7 @@
         android:id="@+id/rvBreeds"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:alpha="0"
+        android:alpha="1"
         tools:listitem="@layout/item_breed"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,8 +34,12 @@
     <com.facebook.shimmer.ShimmerFrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:layout_constraintTop_toTopOf="parent"
-        app:shimmer_auto_start="true">
+        app:shimmer_auto_start="true"
+        app:shimmer_duration="2000"
+        app:shimmer_repeat_delay="0"
+        >
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/viewLoading"

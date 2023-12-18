@@ -2,7 +2,7 @@ package com.cazulabs.dogsapp.ui.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.cazulabs.dogsapp.data.model.remote.APIService
+import com.cazulabs.dogsapp.data.model.old.APIService
 import com.cazulabs.dogsapp.core.ContextHelper
 import com.cazulabs.dogsapp.core.RetrofitHelper
 import com.cazulabs.dogsapp.ui.view.SubBreedActivity

@@ -1,6 +1,7 @@
 package com.cazulabs.dogsapp.mvvm.ui.adapter
 
 import android.content.Intent
+import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.cazulabs.dogsapp.mvvm.core.ContextHelper
@@ -18,14 +19,16 @@ class BreedViewHolderV4(view: View) : RecyclerView.ViewHolder(view) {
     fun bind(breedViewModel: BreedViewModel) {
         val breedModel = breedViewModel.breedModel.value!![adapterPosition]
 
-        if (breedModel.image.isEmpty()) {
+        if (breedModel.image.isEmpty())
             breedViewModel.setBreedImage(this, breedModel.breed, adapterPosition)
-        }
         else
             loadImage(breedModel.image)
 
         binding.tvBreed.text =
-            breedModel.breed.replaceFirst(breedModel.breed.substring(0, 1), breedModel.breed.substring(0, 1).uppercase())
+            breedModel.breed.replaceFirst(
+                breedModel.breed.substring(0, 1),
+                breedModel.breed.substring(0, 1).uppercase()
+            )
 
         if (breedModel.subBreeds.isEmpty()) {
             binding.btSubBreeds.visibility = View.GONE

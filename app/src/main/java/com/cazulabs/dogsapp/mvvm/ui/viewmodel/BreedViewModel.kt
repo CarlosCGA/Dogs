@@ -30,11 +30,11 @@ class BreedViewModel : ViewModel() {
 
     fun setBreedImage(viewHolder: BreedViewHolderV4, breed: String, position: Int) {
         viewModelScope.launch {
-            val result = getBreedImageUseCase(breed)
+            val result = getBreedImageUseCase(breed, howMany = 1)
 
-            if (result.image.isNotEmpty()) {
-                breedModel.value!![position].image = result.image
-                viewHolder.loadImage(result.image)
+            if (result.isNotEmpty()) {
+                breedModel.value!![position].image = result[0].image
+                viewHolder.loadImage(result[0].image)
             }
         }
     }

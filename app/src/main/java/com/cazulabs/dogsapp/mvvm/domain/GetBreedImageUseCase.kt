@@ -7,7 +7,7 @@ class GetBreedImageUseCase {
 
     private val repository = BreedRepository()
 
-    suspend operator fun invoke(breed: String): BreedImageModel =
-        repository.getBreedImage(breed, howMany = 1)[0]
+    suspend operator fun invoke(breed: String, howMany: Int): List<BreedImageModel> =
+        repository.getBreedImage(breed, howMany)
 
 }

@@ -6,14 +6,14 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cazulabs.dogsapp.mvvm.core.ContextHelper
-import com.cazulabs.dogsapp.mvvm.ui.adapter.BreedAdapterV3
+import com.cazulabs.dogsapp.mvvm.ui.adapter.BreedAdapterV4
 import com.cazulabs.dogsapp.mvvm.ui.viewmodel.BreedViewModel
 import com.example.dogs.databinding.ActivityMainBinding
 
 class MainActivityMVVM : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var adapter: BreedAdapterV3
+    private lateinit var adapter: BreedAdapterV4
 
     private val breedViewModel : BreedViewModel by viewModels()
 
@@ -34,7 +34,7 @@ class MainActivityMVVM : AppCompatActivity() {
     }
 
     private fun initRecyclerView() {
-        adapter = BreedAdapterV3(breedViewModel.breedModel) //init recyclerView empty
+        adapter = BreedAdapterV4(breedViewModel) //init recyclerView empty
         binding.rvBreeds.layoutManager = LinearLayoutManager(this)
         binding.rvBreeds.adapter = adapter
     }

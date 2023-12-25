@@ -4,26 +4,22 @@ import android.content.Intent
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.cazulabs.dogsapp.mvvm.core.ContextHelper
-import com.example.dogs.databinding.ItemBreedBinding
 import com.cazulabs.dogsapp.mvvm.core.DogConstants
-import com.cazulabs.dogsapp.mvvm.core.RetrofitHelper
-import com.cazulabs.dogsapp.mvvm.data.breed.model.BreedModel
-import com.cazulabs.dogsapp.old.APIService
+import com.cazulabs.dogsapp.mvvm.ui.viewmodel.BreedViewModel
 import com.cazulabs.dogsapp.old.activity.DogActivity
-import com.cazulabs.dogsapp.mvvm.ui.view.MainActivityMVVM
 import com.cazulabs.dogsapp.old.activity.SubBreedActivity
+import com.example.dogs.databinding.ItemBreedBinding
 import com.squareup.picasso.Picasso
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
-class BreedViewHolderV2(view: View) : RecyclerView.ViewHolder(view) {
+class BreedViewHolderV4(view: View) : RecyclerView.ViewHolder(view) {
 
     private val binding = ItemBreedBinding.bind(view)
 
-    fun bind(adapter: BreedAdapterV2, breedModel: BreedModel) {
+    fun bind(breedViewModel: BreedViewModel) {
+        val breedModel = breedViewModel.breedModel.value!![adapterPosition]
+
         if (breedModel.image.isEmpty()) {
-            getImage(adapter, breedModel.breed)
+            breedViewModel.setBreedImage(this, breedModel.breed, adapterPosition)
         }
         else
             loadImage(breedModel.image)
@@ -57,27 +53,7 @@ class BreedViewHolderV2(view: View) : RecyclerView.ViewHolder(view) {
         }
     }
 
-    private fun getImage(
-        adapter: BreedAdapterV2,
-        breed: String
-    ) {
-        CoroutineScope(Dispatchers.IO).launch {
-            val imageCall = RetrofitHelper.instance.getRetrofit()
-                .create(APIService::class.java)
-                .getRandomDogImagesByBreed(breed, howMany = 1)
-
-            if (imageCall.isSuccessful) {
-                val image = imageCall.body()!!.images[0]
-                val context = ContextHelper.instance.getContext() as MainActivityMVVM
-                context.runOnUiThread {
-                    loadImage(image)
-                }
-                adapter.setImage(image, adapterPosition)
-            }
-        }
-    }
-
-    private fun loadImage(image: String) {
+    fun loadImage(image: String) {
         Picasso.get().load(image).into(binding.ivDog)
         binding.viewLoading.animate().alpha(0F).withEndAction {
             binding.viewLoading.visibility = View.GONE

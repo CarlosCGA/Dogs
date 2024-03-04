@@ -8,14 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cazulabs.dogsapp.mvvm.core.ContextHelper
 import com.cazulabs.dogsapp.mvvm.core.DogAPIConstants
-import com.cazulabs.dogsapp.mvvm.core.RetrofitHelper
+import com.cazulabs.dogsapp.mvvm.ui.adapter.DogAdapterV2
 import com.cazulabs.dogsapp.mvvm.ui.viewmodel.DogViewModel
-import com.cazulabs.dogsapp.old.APIService
-import com.cazulabs.dogsapp.old.adapter.DogAdapter
 import com.example.dogs.databinding.ActivityDogImagelistBinding
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class DogActivityMVVM : AppCompatActivity() {
 
@@ -23,8 +18,7 @@ class DogActivityMVVM : AppCompatActivity() {
     private lateinit var breed: String
     private lateinit var subBreed: String
 
-    private val dogImages = mutableListOf<String>()
-    private lateinit var adapter: DogAdapter
+    private lateinit var adapter: DogAdapterV2
 
     private val dogViewModel: DogViewModel by viewModels()
 
@@ -59,29 +53,9 @@ class DogActivityMVVM : AppCompatActivity() {
     }
 
     private fun initRecyclerView() {
-        adapter = DogAdapter(dogImages) //TODO UPDATE ADAPTER
+        adapter = DogAdapterV2(dogViewModel)
         binding.rvDogs.layoutManager = LinearLayoutManager(this)
         binding.rvDogs.adapter = adapter
-        getDogs()
-    }
-
-    private fun getDogs() {
-        CoroutineScope(Dispatchers.IO).launch {
-            val call = RetrofitHelper.instance.getRetrofit().create(APIService::class.java)
-                .getDogsByBreed(breed)
-            val dogs = call.body()
-            runOnUiThread {
-
-                if (call.isSuccessful) {
-                    val images = dogs?.images ?: emptyList()
-                    dogImages.clear()
-                    dogImages.addAll(images)
-                    adapter.notifyDataSetChanged()
-                    binding.rvDogs.animate().alpha(1F).start()
-                } else
-                    showError()
-            }
-        }
     }
 
     //Show info about query error

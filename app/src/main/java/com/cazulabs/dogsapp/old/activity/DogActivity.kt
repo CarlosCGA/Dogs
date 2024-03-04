@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.cazulabs.dogsapp.mvvm.core.ContextHelper
 import com.cazulabs.dogsapp.mvvm.core.RetrofitHelper
 import com.example.dogs.databinding.ActivityDogImagelistBinding
-import com.cazulabs.dogsapp.mvvm.core.DogConstants
+import com.cazulabs.dogsapp.mvvm.core.DogAPIConstants
 import com.cazulabs.dogsapp.old.APIService
 import com.cazulabs.dogsapp.old.adapter.DogAdapter
 import kotlinx.coroutines.CoroutineScope
@@ -28,7 +28,7 @@ class DogActivity : AppCompatActivity() {
         setContentView(binding.root)
         ContextHelper.instance.setContext(context = this)
 
-        breed = this.intent?.getStringExtra(DogConstants.BREED) ?: ""
+        breed = this.intent?.getStringExtra(DogAPIConstants.BREED) ?: ""
 
         if (breed.isEmpty())
             showError()

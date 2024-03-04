@@ -5,11 +5,11 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cazulabs.dogsapp.mvvm.core.ContextHelper
+import com.cazulabs.dogsapp.mvvm.core.DogAPIConstants
 import com.cazulabs.dogsapp.mvvm.core.RetrofitHelper
-import com.example.dogs.databinding.ActivitySubBreedBinding
-import com.cazulabs.dogsapp.mvvm.core.DogConstants
 import com.cazulabs.dogsapp.old.APIService
 import com.cazulabs.dogsapp.old.adapter.SubBreedAdapter
+import com.example.dogs.databinding.ActivitySubBreedBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -37,8 +37,8 @@ class SubBreedActivity : AppCompatActivity() {
     }
 
     private fun getIntentExtraData() {
-        breed = intent.getStringExtra(DogConstants.BREED)!!
-        subBreeds = intent.getStringArrayExtra(DogConstants.SUB_BREEDS)!!.toMutableList()
+        breed = intent.getStringExtra(DogAPIConstants.BREED)!!
+        subBreeds = intent.getStringArrayExtra(DogAPIConstants.SUB_BREED)!!.toMutableList()
     }
 
     private fun initRecyclerView() {

@@ -25,6 +25,7 @@
             </intent-filter>
         </activity>
 
+        <activity android:name="com.cazulabs.dogsapp.mvvm.ui.view.DogActivityMVVM" />
         <activity android:name="com.cazulabs.dogsapp.old.activity.DogActivity" />
         <activity android:name="com.cazulabs.dogsapp.old.activity.SubBreedActivity" />
     </application>

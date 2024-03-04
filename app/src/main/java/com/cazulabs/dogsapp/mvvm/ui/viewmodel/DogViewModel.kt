@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.cazulabs.dogsapp.mvvm.data.dog.model.DogModel
-import com.cazulabs.dogsapp.mvvm.domain.GetAllDogsByBreedUseCase
+import com.cazulabs.dogsapp.mvvm.domain.GetAllDogsByBreedAndSubBreedUseCase
 import kotlinx.coroutines.launch
 
 class DogViewModel : ViewModel() {
@@ -13,15 +13,15 @@ class DogViewModel : ViewModel() {
     val dogModel = MutableLiveData<List<DogModel>>()
 
     //use cases
-    val getAllDogsByBreedUseCase = GetAllDogsByBreedUseCase
+    val getAllDogsByBreedAndSubBreedUseCase = GetAllDogsByBreedAndSubBreedUseCase()
 
     @SuppressLint("NullSafeMutableLiveData")
     fun onCreate(breed: String, subBreed: String) {
         viewModelScope.launch {
-            val result = getAllDogsByBreedUseCase()
+            val result = getAllDogsByBreedAndSubBreedUseCase(breed, subBreed, howMany = 50)
 
-            if (!result.isNullOrEmpty()) {
-                breedModel.postValue(result)
+            if (result.isNotEmpty()) {
+                dogModel.postValue(result)
             }
         }
     }

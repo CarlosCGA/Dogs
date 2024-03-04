@@ -1,9 +1,12 @@
 package com.cazulabs.dogsapp.old.viewholder
 
+import android.content.Intent
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.cazulabs.dogsapp.mvvm.core.ContextHelper
+import com.cazulabs.dogsapp.mvvm.core.DogAPIConstants
 import com.cazulabs.dogsapp.mvvm.core.RetrofitHelper
+import com.cazulabs.dogsapp.mvvm.ui.view.DogActivityMVVM
 import com.cazulabs.dogsapp.old.APIService
 import com.cazulabs.dogsapp.old.activity.SubBreedActivity
 import com.cazulabs.dogsapp.old.adapter.SubBreedAdapter
@@ -29,6 +32,16 @@ class SubBreedViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             breed.replaceFirst(breed.substring(0, 1), breed.substring(0, 1).uppercase()),
             subBreed.replaceFirst(subBreed.substring(0, 1), subBreed.substring(0, 1).uppercase())
         )
+
+        binding.cvBreed.setOnClickListener {
+            if (ContextHelper.instance.getContext() != null) {
+                val intent =
+                    Intent(ContextHelper.instance.getContext(), DogActivityMVVM::class.java)
+                intent.putExtra(DogAPIConstants.BREED, breed)
+                intent.putExtra(DogAPIConstants.SUB_BREED, subBreed)
+                ContextHelper.instance.getContext()!!.startActivity(intent)
+            }
+        }
     }
 
     private fun getRandomImageBySubBreed(

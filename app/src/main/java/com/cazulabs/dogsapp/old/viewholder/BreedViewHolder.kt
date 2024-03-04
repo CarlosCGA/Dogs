@@ -5,7 +5,7 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.cazulabs.dogsapp.mvvm.core.ContextHelper
 import com.example.dogs.databinding.ItemBreedBinding
-import com.cazulabs.dogsapp.mvvm.core.DogConstants
+import com.cazulabs.dogsapp.mvvm.core.DogAPIConstants
 import com.cazulabs.dogsapp.old.activity.DogActivity
 import com.cazulabs.dogsapp.old.activity.SubBreedActivity
 import com.squareup.picasso.Picasso
@@ -33,7 +33,7 @@ class BreedViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             binding.btDogPictures.setOnClickListener {
                 val intent =
                     Intent(ContextHelper.instance.getContext(), DogActivity::class.java)
-                intent.putExtra(DogConstants.BREED, breed)
+                intent.putExtra(DogAPIConstants.BREED, breed)
                 ContextHelper.instance.getContext()!!.startActivity(intent)
             }
         } else {
@@ -44,8 +44,8 @@ class BreedViewHolder(view: View) : RecyclerView.ViewHolder(view) {
                 if (ContextHelper.instance.getContext() != null) {
                     val intent =
                         Intent(ContextHelper.instance.getContext(), SubBreedActivity::class.java)
-                    intent.putExtra(DogConstants.BREED, breed)
-                    intent.putExtra(DogConstants.SUB_BREEDS, subBreeds.toTypedArray())
+                    intent.putExtra(DogAPIConstants.BREED, breed)
+                    intent.putExtra(DogAPIConstants.SUB_BREED, subBreeds.toTypedArray())
                     ContextHelper.instance.getContext()!!.startActivity(intent)
                 }
             }

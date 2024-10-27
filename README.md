@@ -1,4 +1,4 @@
-# Dogs - Android App
+<h1 align="center">Dogs - Android App</h1>
 
 <p align="center">
     <a href="https://play.google.com/store/apps/details?id=com.cazulabs.dogsapp"><img src="app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" alt="App icon"/></a>

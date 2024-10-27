@@ -11,7 +11,7 @@ import com.cazulabs.dogsapp.old.activity.SubBreedActivity
 import com.example.dogs.databinding.ItemBreedBinding
 import com.squareup.picasso.Picasso
 
-class BreedViewHolderV4(view: View) : RecyclerView.ViewHolder(view) {
+class BreedViewHolderMVVM(view: View) : RecyclerView.ViewHolder(view) {
 
     private val binding = ItemBreedBinding.bind(view)
 

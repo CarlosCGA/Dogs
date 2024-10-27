@@ -6,7 +6,7 @@ import com.cazulabs.dogsapp.mvvm.data.dog.model.DogModel
 import com.example.dogs.databinding.ItemDogBinding
 import com.squareup.picasso.Picasso
 
-class DogViewHolder(view: View): RecyclerView.ViewHolder(view){
+class DogViewHolderMVVM(view: View): RecyclerView.ViewHolder(view){
 
     private val binding = ItemDogBinding.bind(view)
 

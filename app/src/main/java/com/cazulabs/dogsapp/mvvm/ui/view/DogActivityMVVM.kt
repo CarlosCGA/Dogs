@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cazulabs.dogsapp.mvvm.core.ContextHelper
 import com.cazulabs.dogsapp.mvvm.core.DogAPIConstants
-import com.cazulabs.dogsapp.mvvm.ui.adapter.DogAdapterV2
+import com.cazulabs.dogsapp.mvvm.ui.adapter.DogAdapterMVVM
 import com.cazulabs.dogsapp.mvvm.ui.viewmodel.DogViewModel
 import com.example.dogs.databinding.ActivityDogImagelistBinding
 
@@ -18,7 +18,7 @@ class DogActivityMVVM : AppCompatActivity() {
     private lateinit var breed: String
     private lateinit var subBreed: String
 
-    private lateinit var adapter: DogAdapterV2
+    private lateinit var adapter: DogAdapterMVVM
 
     private val dogViewModel: DogViewModel by viewModels()
 
@@ -53,7 +53,7 @@ class DogActivityMVVM : AppCompatActivity() {
     }
 
     private fun initRecyclerView() {
-        adapter = DogAdapterV2(dogViewModel)
+        adapter = DogAdapterMVVM(dogViewModel)
         binding.rvDogs.layoutManager = LinearLayoutManager(this)
         binding.rvDogs.adapter = adapter
     }

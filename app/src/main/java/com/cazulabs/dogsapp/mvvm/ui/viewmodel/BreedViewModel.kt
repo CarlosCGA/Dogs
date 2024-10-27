@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.cazulabs.dogsapp.mvvm.data.breed.model.BreedModel
 import com.cazulabs.dogsapp.mvvm.domain.GetBreedImageUseCase
 import com.cazulabs.dogsapp.mvvm.domain.GetBreedsUseCase
-import com.cazulabs.dogsapp.mvvm.ui.adapter.BreedViewHolderV4
+import com.cazulabs.dogsapp.mvvm.ui.adapter.BreedViewHolderMVVM
 import kotlinx.coroutines.launch
 
 class BreedViewModel : ViewModel() {
@@ -28,7 +28,7 @@ class BreedViewModel : ViewModel() {
         }
     }
 
-    fun setBreedImage(viewHolder: BreedViewHolderV4, breed: String, position: Int) {
+    fun setBreedImage(viewHolder: BreedViewHolderMVVM, breed: String, position: Int) {
         viewModelScope.launch {
             val result = getBreedImageUseCase(breed, howMany = 1)
 

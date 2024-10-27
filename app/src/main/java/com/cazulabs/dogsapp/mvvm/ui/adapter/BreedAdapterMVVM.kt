@@ -6,15 +6,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cazulabs.dogsapp.mvvm.ui.viewmodel.BreedViewModel
 import com.example.dogs.R
 
-class BreedAdapterV4(
+class BreedAdapterMVVM(
     private val breedViewModel: BreedViewModel
-) : RecyclerView.Adapter<BreedViewHolderV4>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BreedViewHolderV4 {
+) : RecyclerView.Adapter<BreedViewHolderMVVM>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BreedViewHolderMVVM {
         val layoutInflater = LayoutInflater.from(parent.context)
-        return BreedViewHolderV4(layoutInflater.inflate(R.layout.item_breed, parent, false))
+        return BreedViewHolderMVVM(layoutInflater.inflate(R.layout.item_breed, parent, false))
     }
 
-    override fun onBindViewHolder(holder: BreedViewHolderV4, position: Int) {
+    override fun onBindViewHolder(holder: BreedViewHolderMVVM, position: Int) {
         holder.bind(breedViewModel)
     }
 

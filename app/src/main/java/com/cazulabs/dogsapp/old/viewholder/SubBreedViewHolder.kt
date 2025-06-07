@@ -33,7 +33,7 @@ class SubBreedViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             subBreed.replaceFirst(subBreed.substring(0, 1), subBreed.substring(0, 1).uppercase())
         )
 
-        binding.cvBreed.setOnClickListener {
+        binding.ivDog.setOnClickListener {
             if (ContextHelper.instance.getContext() != null) {
                 val intent =
                     Intent(ContextHelper.instance.getContext(), DogActivityMVVM::class.java)

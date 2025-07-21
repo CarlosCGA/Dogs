@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.cazulabs.dogsapp.mvvm.ui.viewmodel.DogViewModel
-import com.example.dogs.R
+import com.cazulabs.dogsapp.R
 
 class DogAdapterMVVM(private val dogViewModel: DogViewModel): RecyclerView.Adapter<DogViewHolderMVVM>() {
 

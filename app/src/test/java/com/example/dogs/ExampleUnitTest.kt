@@ -1,4 +1,4 @@
-package com.example.dogs
+package com.cazulabs.dogsapp
 
 import org.junit.Test
 

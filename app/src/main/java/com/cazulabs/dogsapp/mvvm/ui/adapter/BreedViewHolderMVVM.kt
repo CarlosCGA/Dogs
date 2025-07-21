@@ -8,7 +8,7 @@ import com.cazulabs.dogsapp.mvvm.core.DogAPIConstants
 import com.cazulabs.dogsapp.mvvm.ui.viewmodel.BreedViewModel
 import com.cazulabs.dogsapp.old.activity.DogActivity
 import com.cazulabs.dogsapp.old.activity.SubBreedActivity
-import com.example.dogs.databinding.ItemBreedBinding
+import com.cazulabs.dogsapp.databinding.ItemBreedBinding
 import com.squareup.picasso.Picasso
 
 class BreedViewHolderMVVM(view: View) : RecyclerView.ViewHolder(view) {

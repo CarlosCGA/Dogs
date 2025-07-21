@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.cazulabs.dogsapp.mvvm.ui.viewmodel.BreedViewModel
-import com.example.dogs.R
+import com.cazulabs.dogsapp.R
 
 class BreedAdapterMVVM(
     private val breedViewModel: BreedViewModel

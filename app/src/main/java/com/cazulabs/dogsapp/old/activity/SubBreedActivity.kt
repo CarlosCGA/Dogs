@@ -9,7 +9,7 @@ import com.cazulabs.dogsapp.mvvm.core.DogAPIConstants
 import com.cazulabs.dogsapp.mvvm.core.RetrofitHelper
 import com.cazulabs.dogsapp.old.APIService
 import com.cazulabs.dogsapp.old.adapter.SubBreedAdapter
-import com.example.dogs.databinding.ActivitySubBreedBinding
+import com.cazulabs.dogsapp.databinding.ActivitySubBreedBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

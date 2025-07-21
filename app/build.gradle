@@ -4,14 +4,15 @@ plugins {
 }
 
 android {
-    compileSdk 34
+    compileSdk 36
+    namespace 'com.cazulabs.dogsapp'
 
     defaultConfig {
         applicationId "com.cazulabs.dogsapp"
         minSdk 21
-        targetSdk 34
-        versionCode 4
-        versionName "2.0.1"
+        targetSdk 36
+        versionCode 7
+        versionName "2.0.3"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

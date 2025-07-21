@@ -10,8 +10,8 @@ import com.cazulabs.dogsapp.mvvm.ui.view.DogActivityMVVM
 import com.cazulabs.dogsapp.old.APIService
 import com.cazulabs.dogsapp.old.activity.SubBreedActivity
 import com.cazulabs.dogsapp.old.adapter.SubBreedAdapter
-import com.example.dogs.R
-import com.example.dogs.databinding.ItemSubBreedBinding
+import com.cazulabs.dogsapp.R
+import com.cazulabs.dogsapp.databinding.ItemSubBreedBinding
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

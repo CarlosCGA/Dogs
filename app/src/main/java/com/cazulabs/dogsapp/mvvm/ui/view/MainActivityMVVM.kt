@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.cazulabs.dogsapp.mvvm.core.ContextHelper
 import com.cazulabs.dogsapp.mvvm.ui.adapter.BreedAdapterMVVM
 import com.cazulabs.dogsapp.mvvm.ui.viewmodel.BreedViewModel
-import com.example.dogs.databinding.ActivityMainBinding
+import com.cazulabs.dogsapp.databinding.ActivityMainBinding
 
 class MainActivityMVVM : AppCompatActivity() {
 

@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cazulabs.dogsapp.mvvm.core.ContextHelper
 import com.cazulabs.dogsapp.mvvm.core.RetrofitHelper
-import com.example.dogs.databinding.ActivityDogImagelistBinding
+import com.cazulabs.dogsapp.databinding.ActivityDogImagelistBinding
 import com.cazulabs.dogsapp.mvvm.core.DogAPIConstants
 import com.cazulabs.dogsapp.old.APIService
 import com.cazulabs.dogsapp.old.adapter.DogAdapter

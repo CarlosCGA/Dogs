@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.cazulabs.dogsapp.old.viewholder.SubBreedViewHolder
-import com.example.dogs.R
+import com.cazulabs.dogsapp.R
 
 class SubBreedAdapter(
     private var breed: String,

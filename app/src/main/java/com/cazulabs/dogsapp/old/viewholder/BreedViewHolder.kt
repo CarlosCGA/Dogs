@@ -4,7 +4,7 @@ import android.content.Intent
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.cazulabs.dogsapp.mvvm.core.ContextHelper
-import com.example.dogs.databinding.ItemBreedBinding
+import com.cazulabs.dogsapp.databinding.ItemBreedBinding
 import com.cazulabs.dogsapp.mvvm.core.DogAPIConstants
 import com.cazulabs.dogsapp.old.activity.DogActivity
 import com.cazulabs.dogsapp.old.activity.SubBreedActivity

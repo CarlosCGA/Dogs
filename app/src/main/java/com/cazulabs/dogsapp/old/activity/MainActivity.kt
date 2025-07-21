@@ -15,7 +15,7 @@ import com.cazulabs.dogsapp.old.adapter.BreedAdapter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import com.example.dogs.databinding.ActivityMainBinding
+import com.cazulabs.dogsapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity()/*, SearchView.OnQueryTextListener*/ {
 

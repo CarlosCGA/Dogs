@@ -10,7 +10,7 @@ import com.cazulabs.dogsapp.mvvm.core.ContextHelper
 import com.cazulabs.dogsapp.mvvm.core.DogAPIConstants
 import com.cazulabs.dogsapp.mvvm.ui.adapter.DogAdapterMVVM
 import com.cazulabs.dogsapp.mvvm.ui.viewmodel.DogViewModel
-import com.example.dogs.databinding.ActivityDogImagelistBinding
+import com.cazulabs.dogsapp.databinding.ActivityDogImagelistBinding
 
 class DogActivityMVVM : AppCompatActivity() {
 
